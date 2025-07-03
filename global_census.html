@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Census Data Viewer</title>
+    <link rel="stylesheet" href="global_css.css.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌍 Global Census Data Viewer</h1>
+            <p>Explore population statistics from around the world</p>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="regionSelect">Select Region:</label>
+                <select id="regionSelect" onchange="updateData()">
+                    <option value="all">All Regions</option>
+                    <option value="asia">Asia</option>
+                    <option value="europe">Europe</option>
+                    <option value="north-america">North America</option>
+                    <option value="south-america">South America</option>
+                    <option value="africa">Africa</option>
+                    <option value="oceania">Oceania</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label for="sortBy">Sort By:</label>
+                <select id="sortBy" onchange="updateData()">
+                    <option value="population">Population</option>
+                    <option value="area">Area</option>
+                    <option value="density">Density</option>
+                    <option value="growth">Growth Rate</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label for="yearSelect">Year:</label>
+                <select id="yearSelect" onchange="updateData()">
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search for a country..." 
+                   id="searchInput" onkeyup="filterCountries()">
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">🌍</div>
+                <div class="stat-value" id="totalPopulation">8.1B</div>
+                <div class="stat-label">Total World Population</div>
+                <div class="stat-country">As of 2024</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">🏆</div>
+                <div class="stat-value" id="mostPopulous">China</div>
+                <div class="stat-label">Most Populous Country</div>
+                <div class="stat-country">1.41B people</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">📈</div>
+                <div class="stat-value" id="avgGrowthRate">+0.87%</div>
+                <div class="stat-label">Average Growth Rate</div>
+                <div class="stat-country">Annual Change</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">🏙️</div>
+                <div class="stat-value" id="mostDense">Monaco</div>
+                <div class="stat-label">Highest Density</div>
+                <div class="stat-country">26,150/km²</div>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <h2 class="chart-title">Top 10 Countries by Population</h2>
+            <div class="chart" id="populationChart"></div>
+        </div>
+
+        <div class="data-table">
+            <h2 class="table-title">Country Statistics</h2>
+            <div class="table-container">
+                <table id="countryTable">
+                    <thead>
+                        <tr>
+                            <th>Country</th>
+                            <th>Population</th>
+                            <th>Area (km²)</th>
+                            <th>Density (per km²)</th>
+                            <th>Growth Rate</th>
+                            <th>Capital</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+     <script src="global_js.js"></script>
+</body>
+</html>
